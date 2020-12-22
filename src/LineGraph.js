@@ -63,7 +63,7 @@ const buildChartData = (data, casesType) => {
   return chartData;
 };
 
-function LineGraph({ casesType = "cases" }) {
+function LineGraph({ casesType }) {
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -73,7 +73,7 @@ function LineGraph({ casesType = "cases" }) {
           return response.json();
         })
         .then((data) => {
-          let chartData = buildChartData(data, 'cases');
+          let chartData = buildChartData(data, casesType);
           setData(chartData);
           console.log(chartData);
           // buildChart(chartData);
@@ -85,10 +85,9 @@ function LineGraph({ casesType = "cases" }) {
 
   return (
     <div>
-        <h1>apann graph hai</h1>
+      <h1>Graph</h1>
       {data?.length > 0 && (
         <Line
-        options = {options}
           data={{
             datasets: [
               {
@@ -98,7 +97,7 @@ function LineGraph({ casesType = "cases" }) {
               },
             ],
           }}
-          
+          options={options}
         />
       )}
     </div>
