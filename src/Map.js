@@ -6,7 +6,7 @@ import {showDataOnMap} from "./util";
 function Map({countries,casesType,center,zoom}) {
     return (
         <div className ="map">
-            <LeafletMap key={center[0],zoom} center={center} zoom={zoom}>
+            <LeafletMap key={(center[0],zoom)}  center={center} zoom={zoom}>
               {console.log("zoom  ar center",zoom,center)}
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
